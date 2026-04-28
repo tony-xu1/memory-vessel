@@ -3,9 +3,26 @@ float r = 0;
 boolean direction = true;
 
 
+cloud[] myCloud;
+int n = 7;
+
+wave[] myWave;
+int m = 10;
 
 void setup() {
   size(1000, 1000);
+  myCloud = new cloud[n];
+  int i = 0;
+  while (i < n) {
+    myCloud[i] = new cloud();
+    i++;
+  }
+  myWave = new wave[m];
+  int l = 0;
+  while (l < m) {
+    myWave[l] = new wave();
+    l++;
+  }
 }
 
 void draw() {
@@ -15,11 +32,28 @@ void draw() {
   triangle(0, 600, 0, 1000, 1000, 1000);
   fill(#C4F3FF);
   rect(0, 0, 1000, 500);
-  palmTree(255);
 
   //sunnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn
   fill(#FFFA5D);
   circle(1000, 0, 300);
+
+  // cloud============================
+  int i = 0;
+  while (i < n) {
+    myCloud[i].act();
+    myCloud[i].show();
+    i++;
+  }
+
+  //wave=====================
+  int l = 0;
+  while (l < m) {
+    myWave[l].act();
+    myWave[l].show();
+    l++;
+  }
+
+  palmTree(255);
 }
 
 void palmTree(int o) {
