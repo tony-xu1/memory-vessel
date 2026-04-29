@@ -4,10 +4,10 @@ boolean direction = true;
 
 
 cloud[] myCloud;
-int n = 7;
+int n = 10;
 
 wave[] myWave;
-int m = 10;
+int m = 15;
 
 void setup() {
   size(1000, 1000);
@@ -54,14 +54,18 @@ void draw() {
   }
 
   palmTree(255);
+
 }
 
 void palmTree(int o) {
+  noStroke();
   fill(#71490B, o);
   pushMatrix();
   translate(-15, 555);
   rotate(radians(r));
   arc(60, -155, 150, 500, radians(140), radians(300), CHORD);
+  leaf(370, -360 , 0);
+  leaf(370, -360, -20);
   if (r >= 5) {
     direction = false;
   }
@@ -80,4 +84,10 @@ void palmTree(int o) {
 
 
 void leaf(int x, int y, int r) {
+  noStroke();
+  fill(#397136);
+  translate(x, y);
+  scale(1.5);
+  rotate(radians(r));
+  arc(-150, 0, 150, 70, radians(160), radians(360), PIE);
 }
