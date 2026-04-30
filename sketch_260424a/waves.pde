@@ -24,9 +24,9 @@ class wave {
     waveX = waveX - random(0.5, 1.5);
     waveY = waveY + random(0.5, 1.5);
     waveT = waveT - 1;
-    if (waveY > 0.4 * waveX + 600 || waveT == 0) {
-      waveX = random(0, 1100);
-      waveY = random(600, 800);
+    if (waveY >= 0.4 * waveX + 600 || waveT == 0) {
+      waveX = random(0, 1300);
+      waveY = random(600, 700);
       waveT = random(70, 100);
     }
   }

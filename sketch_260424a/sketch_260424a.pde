@@ -2,6 +2,7 @@
 float r = 0;
 boolean direction = true;
 
+int fly;
 
 cloud[] myCloud;
 int n = 10;
@@ -9,8 +10,11 @@ int n = 10;
 wave[] myWave;
 int m = 15;
 
+PImage tornado;
+
 void setup() {
   size(1000, 1000);
+  tornado = loadImage("tornado.png");
   myCloud = new cloud[n];
   int i = 0;
   while (i < n) {
@@ -53,19 +57,31 @@ void draw() {
     l++;
   }
 
-  palmTree(255);
 
+  //tornado-----------------------------------------
+  scale(0.2);
+  image(tornado, fly, 100);
+  fly = fly + 10;
+  if (fly > 5100) {
+    fly = -100;
+  }
+  scale(5);
+  palmTree(255);
 }
 
 void palmTree(int o) {
   noStroke();
   fill(#71490B, o);
-  pushMatrix();
   translate(-15, 555);
   rotate(radians(r));
   arc(60, -155, 150, 500, radians(140), radians(300), CHORD);
-  leaf(370, -360 , 0);
-  leaf(370, -360, -20);
+  leaf(370, -360, 0);
+  leaf(-20, 180, 30);
+  leaf(-150, 0, 0);
+  leaf(-50, -90, -40);
+  fill(#524B25);
+  circle(-200, 20, 50);
+  circle(-170, 20, 50);
   if (r >= 5) {
     direction = false;
   }
@@ -78,16 +94,14 @@ void palmTree(int o) {
   if (direction == false) {
     r = r - 0.05;
   }
-  popMatrix();
 }
 
 
 
-void leaf(int x, int y, int r) {
+void leaf(int x, int y, int angle) {
   noStroke();
   fill(#397136);
   translate(x, y);
-  scale(1.5);
-  rotate(radians(r));
-  arc(-150, 0, 150, 70, radians(160), radians(360), PIE);
+  rotate(radians(angle));
+  arc(-200, 0, 250, 120, radians(160), radians(360), PIE);
 }
